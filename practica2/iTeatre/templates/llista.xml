@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<{{tag1}}>
+	{% for i in contentbody %}
+	<nom>{{i.nom}}</nom>
+	{% endfor %}
+</{{tag1}}>

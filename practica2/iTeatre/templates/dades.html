@@ -1,0 +1,15 @@
+{% extends "index.html"  %}
+
+{% block content %}
+	<h1>{{pagetitle}}</h1>
+{% endblock %}
+
+	{% block nextcontent %}	
+		<ul>
+		<p><b>Nom:</b> {{contentbody.nom}}</p>
+		<p><b>Edat:</b> {{contentbody.edat}}</p>
+		<p><b>Sexe:</b> {{contentbody.sexe}}</p>
+		<p><b>Localitat:</b> {{contentbody.localitat}}</p>
+		</ul>
+<p><a href="/{{tag1}}">Endarrera</a></p>
+	{% endblock %}

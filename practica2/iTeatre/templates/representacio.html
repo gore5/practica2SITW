@@ -1,0 +1,20 @@
+{% extends "index.html"  %}
+
+{% block content %}
+	<h1>{{pagetitle}}</h1>
+{% endblock %}
+ {% block nextcontent %}	
+		<ol>
+		<p><b>T&iacute;tol:</b> {{contentbody.nom}}</p>
+		<p><b>Obra que representa:</b> {{contentbody.nomObra}}</p>
+		<p><b>Director:</b> {{contentbody.director}}</p>
+		<p><b>Comen&ccedil;a el:</b> {{contentbody.dataInici}}</p>
+		<p><b>Acaba el:</b> {{contentbody.dataFi}}</p>
+		<p><b>Actors:</b></p>
+						<ol>{% for actor in contentbody.actors.all  %}
+						<li><p>{{actor.nom}}</p></li>
+						{% endfor %}
+						</ol>			
+		</ol>
+<p><a href="/{{tag1}}">Endarrera</a></p>
+{% endblock %}

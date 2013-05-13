@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<{{tag1}}>
+
+<titol>{{ pagetitle }}</titol><br/>
+
+<{{tag2}}>
+<br>
+	<nom>{{contentbody.nom }}</nom>
+	<edat>{{contentbody.edat}}</edat>
+	<sexe>{{contentbody.sexe}}</sexe>
+	<localitat>{{contentbody.localitat}}</localitat>
+<br/>
+</{{tag2}}>
+
+
+</{{tag1}}>

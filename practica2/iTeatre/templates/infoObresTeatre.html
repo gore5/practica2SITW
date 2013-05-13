@@ -1,0 +1,27 @@
+{% extends "index.html"  %}
+
+{% block content %}
+		<h1>{{ pagetitle }}</h1>
+{% endblock %}
+{% block nextcontent %}	
+		<li><p> <b>{{contentbody.nom }}</b></p></li>
+		<ol>
+			<ol><p>G&egrave;nere: {{contentbody.Tipus}}</p>
+				<p>Escriptor: {{contentbody.escriptor}}</p>
+					<ol>{% for representacio in contentbody.representacions.all %}
+					<li><b><p>Representacio: {{representacio.nom}}</b></p></li>
+					<p>Director: {{representacio.director}}</p>
+					<p>Data d'inici: {{representacio.dataInici}}</p>
+					<p>Data fi: {{representacio.dataFi}}</p>
+					<p>Actors: </p>
+						<ol>{% for actor in representacio.actors.all  %}
+						<li><p>{{actor.nom}}</p></li>
+						{% endfor %}
+						</ol>			
+					{% endfor %}
+					</ol>
+			</ol>
+		</ol>
+<p><a href="/{{tag1}}">Endarrera</a></p>
+		
+{% endblock %}

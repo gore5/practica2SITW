@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<obresTeatre>
+
+<titol>{{ pagetitle }}</titol><br/>
+
+<obresTeatre>
+
+<obres>
+<br>
+	<nom>{{contentbody.nom }}</nom>
+	<tipus>{{contentbody.Tipus}}</tipus>
+	<escriptor>{{contentbody.escriptor}}</escriptor>
+
+	<br>
+	<representacio>
+		{% for representacio in contentbody.representacions.all %}
+		<nom>{{representacio.nom }}</nom>
+		<director>{{representacio.director}}</director>
+		<dataInici>{{representacio.dataInici }}</dataInici>
+		<dataFi>{{representacio.dataFi }}</dataFi>
+
+		<br>
+		<actors>
+			{% for actor in representacio.actors.all %}
+			<nom>{{actor.nom }}</nom>
+			{% endfor %}
+		</actors>
+		</br>
+
+		{% endfor %}
+	</representacio>
+	</br>
+
+<br/>
+</obres>
+
+</obresTeatre>
