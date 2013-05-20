@@ -15,18 +15,16 @@ urlpatterns = patterns('',
 	url(r'^$', ListView.as_view(context_object_name='contentbody', template_name='iTeatre/llista.html'), name='llista'),
 
 # Create a restaurant, /myrestaurants/restaurants/create/
-	url(r'^escriptors/create/$',
-		EscriptorCreate.as_view(),
-		name='escriptor_create'),
-	# Restaurant details, ex.: /myrestaurants/restaurants/1/
+	url(r'^escriptors/create/$', EscriptorCreate.as_view(), name='escriptor_create'),
+	
+# Restaurant details, ex.: /myrestaurants/restaurants/1/
 	url(r'^escriptors/(?P<pk>\d+)/$',
 		EscriptorDetail.as_view(),
 		name='escriptor_detail'),
 
-	url(r'^escriptors$', escriptorpagina, name='Llista escriptors'),
-	url(r'^escriptors/format=(?P<format>\w+)/$', escriptorpagina, name='Llista escriptors amb format'),
-	url(r'^escriptors/(?P<idEscriptor>\d+)/$', escriptordades, name='Dades dels escriptors'),
-	url(r'^escriptors/(?P<idEscriptor>\d+)/format=(?P<format>\w+)$', escriptordades, name='Dades dels escriptorsamb format'),
+	
+	
+
 
 	url(r'^actors$', actorpagina, name='Llista actors'),
 	url(r'^actors/format=(?P<format>\w+)/$', actorpagina, name='Llista actors amb format'),

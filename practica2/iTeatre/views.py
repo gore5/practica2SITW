@@ -28,20 +28,13 @@ def mainpage(request):
 #--------------------------------------------ESCRIPTOR------------------------------------------------
 
 
-def EscriptorCreate(CreateView): 
+class EscriptorCreate(CreateView): 
 	model =  Escriptor
 	#escriptor = Escriptor.objects.all()
 	
-	template_name = 'llista.html'
+	template_name = 'form.html'
 	form_class = EscriptorForm
-	variables = Context({
-		'pagetitle': "Llista d'escriptors",
-		'contentbody': escriptor,
-		'name':'/escriptors/',
-		'tag1':'escriptors',
-		'tag2':'escriptor',
-		'user': request.user,
-	})
+	
 	def form_valid(self, form): 
 		form.instance.user = self.request.user
 		return super(EscriptorCreate, self).form_valid(form)
@@ -49,20 +42,15 @@ def EscriptorCreate(CreateView):
 
 
 
-def EscriptorDetail(CreateView):
+class EscriptorDetail(CreateView):
 
 	model = Escriptor
 	template_name = 'dades.html'
-	variables = Context({
-		'pagetitle': 'Dades del escriptor',
-		'contentbody': escriptor,
-		'tag1':'escriptors',
-		'tag2':'escriptor',
-		'user': request.user,
-	})
+	
 	def get_context_data(self, **kwargs):
 		context = super(EscriptorDetail, self).get_context_data(**kwargs)
 		return context
+
 
 
 #----------------------------------------------ACTOR--------------------------------------------------

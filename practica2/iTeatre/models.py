@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from datetime import *
+from django.core.urlresolvers import reverse
 
 
 # Create your models here.
@@ -18,7 +19,7 @@ class Escriptor(models.Model):
 		return self.nom
 
 	def get_absolute_url(self):
-		return reverse('iTeatre:dades',kwargs={'pk':self.pk})
+		return reverse('escriptor_detail',kwargs={'pk':self.pk})
 
 
 
