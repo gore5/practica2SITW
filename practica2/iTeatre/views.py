@@ -1,10 +1,14 @@
 #-*- coding: utf-8 -*-
-
-from django.http import HttpResponse, Http404
+from django.core.urlresolvers import reverse
+from django.http import HttpResponse, Http404, HttpResponseRedirect
+from django.shortcuts import get_object_or_404
+from django.views.generic import DetailView
+from django.views.generic.edit import CreateView
 from django.template import Context
 from django.template.loader import get_template
 from django.contrib.auth.models import User
 from models import *
+from forms import *
 
 
 
@@ -23,13 +27,13 @@ def mainpage(request):
 
 #--------------------------------------------ESCRIPTOR------------------------------------------------
 
-def escriptorpagina(request, format='html'):
 
-	escriptor = Escriptor.objects.all()
-	if(format=='xml'):
-		template = get_template('llista.xml')
-	else:
-		template = get_template('llista.html')
+def EscriptorCreate(CreateView): 
+	model =  Escriptor
+	#escriptor = Escriptor.objects.all()
+	
+	template_name = 'llista.html'
+	form_class = EscriptorForm
 	variables = Context({
 		'pagetitle': "Llista d'escriptors",
 		'contentbody': escriptor,
@@ -38,16 +42,17 @@ def escriptorpagina(request, format='html'):
 		'tag2':'escriptor',
 		'user': request.user,
 	})
-	output = template.render(variables)
-	return HttpResponse(output)
+	def form_valid(self, form): 
+		form.instance.user = self.request.user
+		return super(EscriptorCreate, self).form_valid(form)
 
-def escriptordades(request, idEscriptor, format='html'):
 
-	escriptor = Escriptor.objects.get(id=idEscriptor)
-	if(format=='xml'):
-		template = get_template('dades.xml')
-	else:
-		template = get_template('dades.html')
+
+
+def EscriptorDetail(CreateView):
+
+	model = Escriptor
+	template_name = 'dades.html'
 	variables = Context({
 		'pagetitle': 'Dades del escriptor',
 		'contentbody': escriptor,
@@ -55,8 +60,9 @@ def escriptordades(request, idEscriptor, format='html'):
 		'tag2':'escriptor',
 		'user': request.user,
 	})
-	output = template.render(variables)
-	return HttpResponse(output)
+	def get_context_data(self, **kwargs):
+		context = super(EscriptorDetail, self).get_context_data(**kwargs)
+		return context
 
 
 #----------------------------------------------ACTOR--------------------------------------------------

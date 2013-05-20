@@ -1,5 +1,8 @@
 from django.conf.urls import patterns, include, url
 from iTeatre.views import *
+from django.views.generic import DetailView, ListView, UpdateView 
+from iTeatre.forms import EscriptorForm
+from iTeatre.models import *
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
@@ -9,7 +12,18 @@ urlpatterns = patterns('',
 
 	url(r'^$', mainpage, name='home'),
 
-    url(r'^escriptors$', escriptorpagina, name='Llista escriptors'),
+	url(r'^$', ListView.as_view(context_object_name='contentbody', template_name='iTeatre/llista.html'), name='llista'),
+
+# Create a restaurant, /myrestaurants/restaurants/create/
+	url(r'^escriptors/create/$',
+		EscriptorCreate.as_view(),
+		name='escriptor_create'),
+	# Restaurant details, ex.: /myrestaurants/restaurants/1/
+	url(r'^escriptors/(?P<pk>\d+)/$',
+		EscriptorDetail.as_view(),
+		name='escriptor_detail'),
+
+	url(r'^escriptors$', escriptorpagina, name='Llista escriptors'),
 	url(r'^escriptors/format=(?P<format>\w+)/$', escriptorpagina, name='Llista escriptors amb format'),
 	url(r'^escriptors/(?P<idEscriptor>\d+)/$', escriptordades, name='Dades dels escriptors'),
 	url(r'^escriptors/(?P<idEscriptor>\d+)/format=(?P<format>\w+)$', escriptordades, name='Dades dels escriptorsamb format'),

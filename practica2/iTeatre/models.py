@@ -11,11 +11,15 @@ class Escriptor(models.Model):
 	edat = models.IntegerField()
 	sexe = models.CharField(max_length=1)
 	localitat = models.CharField(max_length=40)
-	user = models.ForeignKey(User, default=User.objects.get(id=1))	
+	user = models.ForeignKey(User, blank=True,null=True)	
   
 
 	def __unicode__(self):
 		return self.nom
+
+	def get_absolute_url(self):
+		return reverse('iTeatre:dades',kwargs={'pk':self.pk})
+
 
 
 class Actor(models.Model):
@@ -23,7 +27,7 @@ class Actor(models.Model):
 	edat = models.IntegerField()
 	sexe = models.CharField(max_length=1)
 	localitat = models.CharField(max_length=40)
-	user = models.ForeignKey(User, default=User.objects.get(id=1))	
+	user = models.ForeignKey(User,blank=True,null=True)	
 	
 	def __unicode__(self):
 	        return self.nom
@@ -34,7 +38,7 @@ class Director(models.Model):
 	edat = models.IntegerField()
 	sexe = models.CharField(max_length=1)
 	localitat = models.CharField(max_length=40)
-	user = models.ForeignKey(User, default=User.objects.get(id=1))	
+	user = models.ForeignKey(User,blank=True,null=True)	
 
 	def __unicode__(self):
 		return self.nom
@@ -42,7 +46,7 @@ class Director(models.Model):
 
 class nom_Obra (models.Model):
 	nomObra = models.CharField(primary_key=True,max_length=40)
-	user = models.ForeignKey(User, default=User.objects.get(id=1))	
+	user = models.ForeignKey(User,blank=True,null=True)	
 
 	def __unicode__(self):
 		return self.nomObra
@@ -55,7 +59,7 @@ class Representacio (models.Model):
 	dataFi = models.DateField()
 	actors = models.ManyToManyField(Actor)
 	director = models.ForeignKey(Director)
-	user = models.ForeignKey(User, default=User.objects.get(id=1))	
+	user = models.ForeignKey(User,blank=True,null=True)	
 	
 	
 
@@ -68,7 +72,7 @@ class Obra_Teatre(models.Model):
 	Tipus = models.CharField(max_length=40)
 	escriptor = models.ForeignKey(Escriptor)
 	representacions = models.ManyToManyField(Representacio)
-	user = models.ForeignKey(User, default=User.objects.get(id=1))	
+	user = models.ForeignKey(User,blank=True,null=True)	
 
 	def __unicode__(self):
 		return self.nom.nomObra
