@@ -16,6 +16,6 @@
 						{% endfor %}
 						</ol>			
 		</ol>
-<p><a href="{{request.path}}edit">Editar</a></p>
 <p><a href="/representacions">Endarrera</a></p>
+<p><a href="{{request.path}}edit">Editar</a></p>
 {% endblock %}

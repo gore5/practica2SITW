@@ -212,10 +212,6 @@ urlpatterns += patterns('',
 
 	url(r'^api/obresTeatre/$', APIObra_TeatreList.as_view(), name='obra_Teatre-list'),
 	url(r'^api/obresTeatre/(?P<pk>\d+)/$', APIObra_TeatreDetail.as_view(), name='obra_Teatre-detail'),
-
-	url(r'^api/nomObra/$', APInom_ObraList.as_view(), name='nom_obra-list'),
-	url(r'^api/nomObra/(?P<pk>\d+)/$',APInom_ObraDetail.as_view(), name='nom_obra-detail'),
-    
     
 )
 

@@ -13,6 +13,6 @@
 		</ul>
 
 
-<p><a href="/escriptors">Endarrera</a></p>
-<p><a href="{{request.path}}edit">Editar</a></p>
+<p><a href="/escriptors">Endarrera</a>
+<p><a href="{{request.path}}edit">Editar</a></p></p>
 	{% endblock %}

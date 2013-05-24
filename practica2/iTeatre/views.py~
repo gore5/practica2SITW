@@ -150,16 +150,3 @@ class APIObra_TeatreDetail(generics.RetrieveUpdateDestroyAPIView):
     model = Obra_Teatre
     serializer_class = Obra_TeatreSerializer
 
-
-#nom_Obra
-class APInom_ObraList(generics.ListCreateAPIView):
-    permission_classes = (IsOwnerOrReadOnly,)
-    model = nom_Obra
-    serializer_class = nom_ObraSerializer
-
-class APInom_ObraDetail(generics.RetrieveUpdateDestroyAPIView):
-    permission_classes = (IsOwnerOrReadOnly,)
-    model = nom_Obra
-    serializer_class = nom_ObraSerializer
-
-

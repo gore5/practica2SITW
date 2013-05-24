@@ -24,6 +24,6 @@
 			</ol>
 		</ol>
 <p><a href="{{request.path}}edit">Editar</a></p>
-<p><a href="/obresTeatre">Endarrera</a></p>
+p><a href="/obresTeatre">Endarrera</a></p>
 		
 {% endblock %}

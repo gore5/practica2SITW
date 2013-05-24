@@ -23,7 +23,7 @@ class RepresentacioForm(ModelForm):
 		exclude = ('user')
 class Obra_TeatreForm(ModelForm):	
 	class Meta:	
-		model =	Obra_Teatre
+		model =	Director
 		exclude = ('user')
 	
   
