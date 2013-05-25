@@ -27,21 +27,24 @@ class DirectorSerializer(HyperlinkedModelSerializer):
 class nom_ObraSerializer(HyperlinkedModelSerializer):
     url = HyperlinkedIdentityField(view_name='nom_obra-detail')
     user = CharField(read_only=True)
+    class Meta:
+        model = nom_Obra
+        fields = ('nomObra', 'user')
 
 class RepresentacioSerializer(HyperlinkedModelSerializer):
     url = HyperlinkedIdentityField(view_name='representacio-detail')
-    nomObra = HyperlinkedRelatedField(many=True, read_only=True, view_name='nom_obra-detail')
+    nomObra = HyperlinkedRelatedField(many=False, read_only=True, view_name='nom_obra-detail')
     actors = HyperlinkedRelatedField(many=True, read_only=True, view_name='actor-detail')
-    director = HyperlinkedRelatedField(many=True, read_only=True, view_name='director-detail')
+    director = HyperlinkedRelatedField(many=False, read_only=True, view_name='director-detail')
     user = CharField(read_only=True)
     class Meta:
         model = Representacio
         fields = ('nom', 'nomObra', 'dataInici', 'dataFi', 'actors', 'director','user')
 
 class Obra_TeatreSerializer(HyperlinkedModelSerializer):
-    url = HyperlinkedIdentityField(view_name='obraTeatre-detail')
-    nomObra = HyperlinkedRelatedField(many=True, read_only=True, view_name='nom_obra-detail')
-    escriptor = HyperlinkedRelatedField(many=True, read_only=True, view_name='escriptor-detail')
+    url = HyperlinkedIdentityField(view_name='obra_Teatre-detail')
+    nom = HyperlinkedIdentityField(view_name='nom_obra-detail')
+    escriptor = HyperlinkedRelatedField(many=False, read_only=True, view_name='escriptor-detail')
     representacions = HyperlinkedRelatedField(many=True, read_only=True, view_name='representacio-detail')
     user = CharField(read_only=True)
     class Meta:
