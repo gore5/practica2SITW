@@ -7,13 +7,13 @@
 	{% block nextcontent %}	
   <script>
         $(function() {
-            $.getJSON("{% static "countries.json" %}", {}, function (countries) {
-                $("#id_localitat").autocomplete({
-                    source: countries
+            $.getJSON("{% static "noms.json" %}", {}, function (noms) {
+                $("#id_nom").autocomplete({
+                    source: noms
                 });
             });
 
-            $("#id_nom").autocomplete({
+            $("#id_localitat").autocomplete({
                 source: function( request, response ) {
                     $.ajax({
                         url: "http://ws.geonames.org/searchJSON",
@@ -38,9 +38,7 @@
                 minLength: 2,
                 select: function( event, ui ) {
                     if (ui.item) {
-                        $("#id_stateOrProvince").val(ui.item.stateOrProvince);
                         $("#id_localitat").val(ui.item.countryName);
-                        $("#id_zipCode").val("");
                     }
                 }
             });
