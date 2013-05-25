@@ -1,7 +1,7 @@
 {% extends "index.html"  %}
 {% load staticfiles %}
 	{% block content %}
-		<h1>{{ pagetitle }}</h1>
+		<h1>Formulari</h1>
 	{% endblock %}	 
 
 	{% block nextcontent %}	
@@ -39,20 +39,22 @@
                 select: function( event, ui ) {
                     if (ui.item) {
                         $("#id_stateOrProvince").val(ui.item.stateOrProvince);
-                        $("#id_country").val(ui.item.countryName);
+                        $("#id_localitat").val(ui.item.countryName);
                         $("#id_zipCode").val("");
                     }
                 }
             });
         });
     </script>
-
-
+	
+		
 		<form method="post" action="">	
+		
 			{% csrf_token %}	
 			<table>	
 				{{ form.as_table }}	
 			</table>	
-			<input type="submit" value="Submit"/>	
+			<input type="submit" value="Aceptar"/>
 		</form>	
+	<p><a href="{{request.META.HTTP_REFERER}}"><button>Cancelar</button></a></p>
 {% endblock %}

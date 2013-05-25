@@ -62,7 +62,7 @@ class nom_Obra (models.Model):
 		return self.nomObra
 
 	def get_absolute_url(self):
-        	return reverse('nom_obra_detail', kwargs={'pk': nomObra.pk})
+        	return reverse('nom_obra_detail', kwargs={'pk': self.pk})
 	
 
 class Representacio (models.Model):

@@ -7,12 +7,12 @@
 		<ol>
 		<p><b>T&iacute;tol:</b> {{representacio.nom}}</p>
 		<p><b>Obra que representa:</b> {{representacio.nomObra}}</p>
-		<p><b>Director:</b> {{representacio.director}}</p>
+		<p><a href="directors/{{representacio.director.id}}"><b>Director:</b> {{representacio.director}}</a></p>
 		<p><b>Comen&ccedil;a el:</b> {{representacio.dataInici}}</p>
 		<p><b>Acaba el:</b> {{representacio.dataFi}}</p>
 		<p><b>Actors:</b></p>
 						<ol>{% for actor in representacio.actors.all  %}
-						<li><p>{{actor.nom}}</p></li>
+						<li><p><a href="actors/{{actor.id}}">{{actor.nom}}<a/></p></li>
 						{% endfor %}
 						</ol>			
 		</ol>

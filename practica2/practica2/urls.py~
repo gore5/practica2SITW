@@ -35,7 +35,7 @@ urlpatterns = patterns('',
 	
 	# DETAIL
 	url(r'^escriptors/(?P<pk>\d+)/$',GenericDetail.as_view(
-	model = Escriptor,
+	model = Person,
 	template_name = 'dades.html'), 
 	name='escriptor_detail'),
 
@@ -67,7 +67,7 @@ urlpatterns = patterns('',
 	
 	# DETAIL
 	url(r'^actors/(?P<pk>\d+)/$',GenericDetail.as_view(
-	model = Actor,
+	model = Person,
 	template_name = 'dades.html'), 
 	name='actor_detail'),
 
@@ -99,7 +99,7 @@ urlpatterns = patterns('',
 	
 	# DETAIL
 	url(r'^directors/(?P<pk>\d+)/$',GenericDetail.as_view(
-	model = Director,
+	model = Person,
 	template_name = 'dades.html'), 
 	name='director_detail'),
 
@@ -119,14 +119,21 @@ urlpatterns = patterns('',
 	url(r'^representacions/(?P<pk>\d+)/edit/$', GenericUpdate.as_view(
 	model = Representacio,
 	template_name = 'form.html', 
-	form_class = RepresentacioForm), 
-	name='update_representacion'),
+	form_class = RepresentacioForm,
+	success_url = '/representacions'), 
+	name='update_representacio'),
+	
+	url(r'^representacions/(?P<pk>\d+)/directors/(?P<pkr2>\d+)/edit/$',GenericUpdate.as_view(
+	model = Director,
+	template_name = 'form.html'), 
+	name='representacio_update2'),
 
 	# CREATE
 	url(r'^representacions/create/$', GenericCreate.as_view(
 	model =  Representacio,
 	template_name = 'form.html',
-	form_class = RepresentacioForm), 
+	form_class = RepresentacioForm,
+	success_url = '/representacions'), 
 	name='representacio_create'),
 	
 	# DETAIL
@@ -134,6 +141,18 @@ urlpatterns = patterns('',
 	model = Representacio,
 	template_name = 'representacio.html'), 
 	name='representacio_detail'),
+	
+	# DETAIL DIRECTOR
+	url(r'^representacions/(?P<pk>\d+)/directors/(?P<pkr2>\d+)/$',GenericDetail.as_view(
+	model = Person,
+	template_name = 'dades.html'), 
+	name='representacio_detail2'),
+	# DETAIL ACTORS
+	url(r'^representacions/(?P<pk>\d+)/actors/(?P<pkr3>\d+)/$',GenericDetail.as_view(
+	model = Representacio,
+	template_name = 'dades.html'), 
+	name='representacio_detail'),
+
 
 	# DELETE
 	url(r'^representacions/(?P<pk>\d+)/delete/$',GenericDelete.as_view(
@@ -151,15 +170,23 @@ urlpatterns = patterns('',
 	url(r'^obresTeatre/(?P<pk>\d+)/edit/$', GenericUpdate.as_view(
 	model = Obra_Teatre,
 	template_name = 'form.html', 
-	form_class = Obra_TeatreForm), 
+	form_class = Obra_TeatreForm,
+	success_url = '/obresTeatre'), 
+	name='update_obraTeatre'),
+
+	url(r'^obresTeatre/(?P<pk>\d+)/escriptors/(?P<pkr2>\d+)/edit/$',GenericUpdate.as_view(
+	model = Escriptor,
+	template_name = 'form.html'), 
 	name='update_obraTeatre'),
 
 	# CREATE
 	url(r'^obresTeatre/create/$', GenericCreate.as_view(
 	model =  Obra_Teatre,
 	template_name = 'form.html',
-	form_class = Obra_TeatreForm), 
+	form_class = Obra_TeatreForm,
+	success_url = '/obresTeatre'), 
 	name='obraTeatre_create'),
+
 	
 	# DETAIL
 	url(r'^obresTeatre/(?P<pk>\d+)/$',GenericDetail.as_view(
@@ -167,18 +194,19 @@ urlpatterns = patterns('',
 	template_name = 'infoObresTeatre.html'), 
 	name='obra_Teatre_detail'),
 
-	#url(r'^obresTeatre/(?P<pk>\d+)/escriptors/(?P<pkr2>\d+)/$',GenericDetail.as_view(
-	#model = Escriptor,
-	#template_name = 'dades.html'), 
-	#name='escriptorObra_detail'),
-
+	# DETAIL ESCRIPTOR
+	url(r'^obresTeatre/(?P<pk>\d+)/escriptors/(?P<pkr2>\d+)/$',GenericDetail.as_view(
+	model = Person,
+	template_name = 'dades.html'), 
+	name='obra_Teatre_detail'),
+	
 	# DELETE
 	url(r'^obresTeatre/(?P<pk>\d+)/delete/$',GenericDelete.as_view(
 	model = Obra_Teatre,
 	template_name = 'form.html', 
 	success_url = '/obresTeatre'),
 	name='obraTeatre_delete'),
-
+		
 
 
 	# ERROR, in logging
@@ -212,6 +240,10 @@ urlpatterns += patterns('',
 
 	url(r'^api/obresTeatre/$', APIObra_TeatreList.as_view(), name='obra_Teatre-list'),
 	url(r'^api/obresTeatre/(?P<pk>\d+)/$', APIObra_TeatreDetail.as_view(), name='obra_Teatre-detail'),
+
+	url(r'^api/nomObra/$', APInom_ObraList.as_view(), name='nom_obra-list'),
+	url(r'^api/nomObra/(?P<pk>\d+)/$',APInom_ObraDetail.as_view(), name='nom_obra-detail'),
+    
     
 )
 

@@ -7,10 +7,9 @@
 		<li><p> <b>{{obra_teatre.nom }}</b></p></li>
 		<ol>
 			<ol><p>G&egrave;nere: {{obra_teatre.Tipus}}</p>
-				
-				<p><a href="{{request.path}}escriptors/{{escriptor.id}}">Escriptor: {{obra_teatre.escriptor}}</a></p>
+				<p><a href="escriptors/{{obra_teatre.escriptor.id}}">Escriptor: {{obra_teatre.escriptor}}</a></p>
 					<ol>{% for representacio in obra_teatre.representacions.all %}
-					<li><b><p>Representacio: {{representacio.nom}}</b></p></li>
+					<li><b><p>Representacio: {{representacio.nom.nomObra}}</b></p></li>
 					<p>Director: {{representacio.director}}</p>
 					<p>Data d'inici: {{representacio.dataInici}}</p>
 					<p>Data fi: {{representacio.dataFi}}</p>
@@ -24,6 +23,6 @@
 			</ol>
 		</ol>
 <p><a href="{{request.path}}edit">Editar</a></p>
-p><a href="/obresTeatre">Endarrera</a></p>
+<p><a href="/obresTeatre">Endarrera</a></p>
 		
 {% endblock %}
