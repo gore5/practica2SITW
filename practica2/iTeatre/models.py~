@@ -7,11 +7,14 @@ from django.core.urlresolvers import reverse
 # Create your models here.
 
 
-class Escriptor(models.Model):
+class Person(models.Model):
 	nom = models.CharField(max_length=40)
 	edat = models.IntegerField()
 	sexe = models.CharField(max_length=1)
 	localitat = models.CharField(max_length=40)
+
+
+class Escriptor(Person):
 	user = models.ForeignKey(User, blank=True,null=True)	
   
 
@@ -22,11 +25,7 @@ class Escriptor(models.Model):
 		return reverse('escriptor_detail',kwargs={'pk':self.pk})
 
   
-class Actor(models.Model):
-	nom = models.CharField(max_length=40)
-	edat = models.IntegerField()
-	sexe = models.CharField(max_length=1)
-	localitat = models.CharField(max_length=40)
+class Actor(Person):
 	user = models.ForeignKey(User,blank=True,null=True)	
 	
 	def __unicode__(self):
@@ -38,11 +37,7 @@ class Actor(models.Model):
 
 
 
-class Director(models.Model):
-	nom = models.CharField(max_length=40)
-	edat = models.IntegerField()
-	sexe = models.CharField(max_length=1)
-	localitat = models.CharField(max_length=40)
+class Director(Person):
 	user = models.ForeignKey(User,blank=True,null=True)	
 
 	def __unicode__(self):
@@ -55,7 +50,7 @@ class Director(models.Model):
 
 
 class nom_Obra (models.Model):
-	nomObra = models.CharField(primary_key=True,max_length=40)
+	nomObra = models.CharField(pnull=False,max_length=40)
 	user = models.ForeignKey(User,blank=True,null=True)	
 
 	def __unicode__(self):

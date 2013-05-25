@@ -25,5 +25,10 @@ class Obra_TeatreForm(ModelForm):
 	class Meta:	
 		model =	Obra_Teatre
 		exclude = ('user')
+
+class nom_ObraForm(ModelForm):	
+	class Meta:	
+		model =	nom_Obra
+		exclude = ('user')
 	
   
