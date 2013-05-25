@@ -179,13 +179,22 @@ urlpatterns = patterns('',
 	template_name = 'form.html'), 
 	name='update_obraTeatre'),
 
-	# CREATE
+	# CREATE nom_Obra
 	url(r'^obresTeatre/create/$', GenericCreate.as_view(
+	model =  nom_Obra,
+	template_name = 'form.html',
+	form_class = nom_ObraForm,
+	success_url = '/obresTeatre/createObra/'), 
+	name='obraTeatre_create'),
+	
+
+	# CREATE
+	url(r'^obresTeatre/createObra/$', GenericCreate.as_view(
 	model =  Obra_Teatre,
 	template_name = 'form.html',
 	form_class = Obra_TeatreForm,
 	success_url = '/obresTeatre'), 
-	name='obraTeatre_create'),
+	name='obraTeatre_create2'),
 
 	
 	# DETAIL

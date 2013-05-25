@@ -50,7 +50,7 @@ class Director(Person):
 
 
 class nom_Obra (models.Model):
-	nomObra = models.CharField(primary_key=True,max_length=40)
+	nomObra = models.CharField(null=False,max_length=40)
 	user = models.ForeignKey(User,blank=True,null=True)	
 
 	def __unicode__(self):
