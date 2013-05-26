@@ -61,7 +61,7 @@ class nom_Obra (models.Model):
 	
 
 class Representacio (models.Model):
-	nom = models.CharField(max_length=40)
+	nomRepresentacio = models.CharField(max_length=40)
 	nomObra = models.ForeignKey(nom_Obra)
 	dataInici = models.DateField()
 	dataFi = models.DateField()

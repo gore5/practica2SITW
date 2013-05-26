@@ -39,7 +39,7 @@ class RepresentacioSerializer(HyperlinkedModelSerializer):
     user = CharField(read_only=True)
     class Meta:
         model = Representacio
-        fields = ('nom', 'nomObra', 'dataInici', 'dataFi', 'actors', 'director','user')
+        fields = ('nomRepresentacio', 'nomObra', 'dataInici', 'dataFi', 'actors', 'director','user')
 
 class Obra_TeatreSerializer(HyperlinkedModelSerializer):
     url = HyperlinkedIdentityField(view_name='obra_Teatre-detail')

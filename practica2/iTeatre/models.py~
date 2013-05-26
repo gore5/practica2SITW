@@ -50,7 +50,7 @@ class Director(Person):
 
 
 class nom_Obra (models.Model):
-	nomObra = models.CharField(pnull=False,max_length=40)
+	nomObra = models.CharField(max_length=40)
 	user = models.ForeignKey(User,blank=True,null=True)	
 
 	def __unicode__(self):
@@ -61,7 +61,7 @@ class nom_Obra (models.Model):
 	
 
 class Representacio (models.Model):
-	nom = models.CharField(max_length=40)
+	nomRepresentacio = models.CharField(max_length=40)
 	nomObra = models.ForeignKey(nom_Obra)
 	dataInici = models.DateField()
 	dataFi = models.DateField()
@@ -81,7 +81,7 @@ class Obra_Teatre(models.Model):
 	nom = models.ForeignKey(nom_Obra)
 	Tipus = models.CharField(max_length=40)
 	escriptor = models.ForeignKey(Escriptor)
-	representacions = models.ManyToManyField(Representacio)
+	representacions = models.ManyToManyField(Representacio,null=False)
 	user = models.ForeignKey(User,blank=True,null=True)	
 
 	def __unicode__(self):
